@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "478e534abb6e0f259436e13b929e022d",
+    "revision": "88947bcad77a4b8df20a0bdc778fe5aa",
     "url": "/Newsify/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Newsify/static/css/2.2cfa1b23.chunk.css"
   },
   {
-    "revision": "d4af8de7066b94f50343",
+    "revision": "bd3926461b21c74741e9",
     "url": "/Newsify/static/css/main.981f7211.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Newsify/static/js/2.675f3392.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d4af8de7066b94f50343",
-    "url": "/Newsify/static/js/main.35dca738.chunk.js"
+    "revision": "bd3926461b21c74741e9",
+    "url": "/Newsify/static/js/main.4f544688.chunk.js"
   },
   {
     "revision": "fb0009ea22bb4aacbe1f",
