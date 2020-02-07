@@ -46,7 +46,7 @@ Home.propTypes = {
 
 function City(fetchedUser){
 //    var town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
-    var town="fdg";
+    var town;
     connect.subscribe(event => {
         if (!event.detail) {
             return;
