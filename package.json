@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://Alexandr-Fox.github.io/Newsify/",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "cross-env PORT=10888 react-scripts start",
     "build": "react-scripts build"
   },
@@ -12,6 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^5.2.1",
+    "gh-pages": "^2.2.0",
     "react-hot-loader": "^4.12.19",
     "react-scripts": "^3.3.1"
   },
