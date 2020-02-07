@@ -45,8 +45,8 @@ Home.propTypes = {
 };
 
 function City(fetchedUser){
-//    var town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
-    var town;
+    var town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
+//    var town;
     connect.subscribe(event => {
         if (!event.detail) {
             return;
@@ -62,7 +62,7 @@ function City(fetchedUser){
                 x.onload = function() {
                     if (x.status === 200) {
                         var string = JSON.parse(x.responseText);
-                        town = string['response']['GeoObjectCollection']['featureMember']['GeoObject']['0']['GeoObject']['name'];
+                        town = string.response.GeoObjectCollection.featureMember.GeoObject[0].GeoObject.name;
                     }
                 }
                 x.send()
@@ -72,6 +72,7 @@ function City(fetchedUser){
         else {town = type;}
     });
     connect.send("VKWebAppGetGeodata", {});
+//    town=JSON.stringify(connect.send("VKWebAppGetGeodata", {}));
     return town;
 }
 export default Home;
