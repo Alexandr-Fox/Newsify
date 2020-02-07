@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Newsify/static/css/main.981f7211.chunk.css",
+    "main.js": "/Newsify/static/js/main.35dca738.chunk.js",
+    "main.js.map": "/Newsify/static/js/main.35dca738.chunk.js.map",
+    "runtime-main.js": "/Newsify/static/js/runtime-main.5579cca6.js",
+    "runtime-main.js.map": "/Newsify/static/js/runtime-main.5579cca6.js.map",
+    "static/css/2.2cfa1b23.chunk.css": "/Newsify/static/css/2.2cfa1b23.chunk.css",
+    "static/js/2.675f3392.chunk.js": "/Newsify/static/js/2.675f3392.chunk.js",
+    "static/js/2.675f3392.chunk.js.map": "/Newsify/static/js/2.675f3392.chunk.js.map",
+    "index.html": "/Newsify/index.html",
+    "precache-manifest.21af23f5634ad0ea159852847f5ec1a9.js": "/Newsify/precache-manifest.21af23f5634ad0ea159852847f5ec1a9.js",
+    "service-worker.js": "/Newsify/service-worker.js",
+    "static/css/2.2cfa1b23.chunk.css.map": "/Newsify/static/css/2.2cfa1b23.chunk.css.map",
+    "static/css/main.981f7211.chunk.css.map": "/Newsify/static/css/main.981f7211.chunk.css.map",
+    "static/js/2.675f3392.chunk.js.LICENSE.txt": "/Newsify/static/js/2.675f3392.chunk.js.LICENSE.txt",
+    "static/media/persik.png": "/Newsify/static/media/persik.4e1ec840.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5579cca6.js",
+    "static/css/2.2cfa1b23.chunk.css",
+    "static/js/2.675f3392.chunk.js",
+    "static/css/main.981f7211.chunk.css",
+    "static/js/main.35dca738.chunk.js"
+  ]
+}
