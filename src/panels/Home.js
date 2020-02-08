@@ -14,6 +14,7 @@ import HeaderButton from '@vkontakte/vkui/dist/components/HeaderButton/HeaderBut
 import Icon28Settings from '@vkontakte/icons/dist/28/settings';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 
+var count = 0;
 
 const osName = platform();
 
@@ -57,36 +58,40 @@ Home.propTypes = {
 };
 
 function City(fetchedUser){
-    var town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
-//    var town="dfghg";
+//    var town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
+    var town;
+    var x=new XMLHttpRequest();
+    var adress='https://geocode-maps.yandex.ru/1.x/?format=json&apikey=aaa60bd2-f573-4cf9-873e-589107560bc0&sco=longlat&kind=locality&geocode=';
     connect.subscribe(event => {
-//        if (!event.detail) {
-//            return;
-//        }
+        if (!event.detail) {
+            return "Error";
+        }
 
         const { type, data } = event.detail;
 
         if (type === 'VKWebAppGeodataResult') {
-            if( data.available===true){
-                var adress='https://geocode-maps.yandex.ru/1.x/?format=json&apikey=aaa60bd2-f573-4cf9-873e-589107560bc0&sco=longlat&kind=locality&geocode='+data.long+','+data.lat;
-                var x=new XMLHttpRequest();
-                x.open('GET', adress,true);
+            if( data.available === true){
+                adress=adress+data.long+','+data.lat;
+                x.open('GET', adress,false);
                 x.onload = function() {
-                    if (x.status === 200) {
-                        var string = JSON.parse(x.responseText);
-                        town = string.response.GeoObjectCollection.featureMember[0].GeoObject.name;
+                    if (x.status === 200 ) {
+                        if (count<1){
+                            var string = JSON.parse(x.responseText);
+                            town = string.response.GeoObjectCollection.featureMember[0].GeoObject.name;
+                            count=count+1;}
+                        else{town = JSON.parse(x.responseText).response.GeoObjectCollection.featureMember[0].GeoObject.name;}
                     }
                 }
                 x.send();
-             }
+            }
             else{
                town=JSON.stringify(data);
+               town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
             }
         }
-        else {town = type;}
+        else {town = JSON.stringify(data);town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';}
     });
     connect.send("VKWebAppGetGeodata", {});
-//    town=JSON.stringify(connect.send("VKWebAppGetGeodata", {}));
     return town;
 }
 export default Home;
