@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import connect from '@vkontakte/vk-connect';
+import connect from '@vkontakte/vk-connect';
 import VKConnect from '@vkontakte/vkui-connect-mock';
 import { platform, IOS } from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -58,8 +58,8 @@ Home.propTypes = {
 
 function City(fetchedUser){
     var town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
-//    var town;
-    VKConnect.subscribe(event => {
+//    var town="dfghg";
+    connect.subscribe(event => {
 //        if (!event.detail) {
 //            return;
 //        }
@@ -74,17 +74,19 @@ function City(fetchedUser){
                 x.onload = function() {
                     if (x.status === 200) {
                         var string = JSON.parse(x.responseText);
-                        town = string['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['name'];
+                        town = string.response.GeoObjectCollection.featureMember[0].GeoObject.name;
                     }
                 }
-                x.send()
+                x.send();
              }
-             else{town=JSON.stringify(data);}
+            else{
+               town=JSON.stringify(data);
+            }
         }
         else {town = type;}
     });
-    town = VKConnect.send("VKWebAppGetGeodata", {});
-//    town=JSON.stringify(VKConnect.send("VKWebAppGetGeodata", {}));
+    connect.send("VKWebAppGetGeodata", {});
+//    town=JSON.stringify(connect.send("VKWebAppGetGeodata", {}));
     return town;
 }
 export default Home;
