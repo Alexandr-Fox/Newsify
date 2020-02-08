@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/Newsify/static/css/main.981f7211.chunk.css",
-    "main.js": "/Newsify/static/js/main.4f544688.chunk.js",
-    "main.js.map": "/Newsify/static/js/main.4f544688.chunk.js.map",
+    "main.js": "/Newsify/static/js/main.a9f5c942.chunk.js",
+    "main.js.map": "/Newsify/static/js/main.a9f5c942.chunk.js.map",
     "runtime-main.js": "/Newsify/static/js/runtime-main.5579cca6.js",
     "runtime-main.js.map": "/Newsify/static/js/runtime-main.5579cca6.js.map",
     "static/css/2.2cfa1b23.chunk.css": "/Newsify/static/css/2.2cfa1b23.chunk.css",
-    "static/js/2.675f3392.chunk.js": "/Newsify/static/js/2.675f3392.chunk.js",
-    "static/js/2.675f3392.chunk.js.map": "/Newsify/static/js/2.675f3392.chunk.js.map",
+    "static/js/2.1da2c177.chunk.js": "/Newsify/static/js/2.1da2c177.chunk.js",
+    "static/js/2.1da2c177.chunk.js.map": "/Newsify/static/js/2.1da2c177.chunk.js.map",
     "index.html": "/Newsify/index.html",
-    "precache-manifest.d18584300809f3d67db288f572ea6608.js": "/Newsify/precache-manifest.d18584300809f3d67db288f572ea6608.js",
+    "precache-manifest.16b2f90557b75f672c870c476b8abc41.js": "/Newsify/precache-manifest.16b2f90557b75f672c870c476b8abc41.js",
     "service-worker.js": "/Newsify/service-worker.js",
     "static/css/2.2cfa1b23.chunk.css.map": "/Newsify/static/css/2.2cfa1b23.chunk.css.map",
     "static/css/main.981f7211.chunk.css.map": "/Newsify/static/css/main.981f7211.chunk.css.map",
-    "static/js/2.675f3392.chunk.js.LICENSE.txt": "/Newsify/static/js/2.675f3392.chunk.js.LICENSE.txt",
+    "static/js/2.1da2c177.chunk.js.LICENSE.txt": "/Newsify/static/js/2.1da2c177.chunk.js.LICENSE.txt",
     "static/media/persik.png": "/Newsify/static/media/persik.4e1ec840.png"
   },
   "entrypoints": [
     "static/js/runtime-main.5579cca6.js",
     "static/css/2.2cfa1b23.chunk.css",
-    "static/js/2.675f3392.chunk.js",
+    "static/js/2.1da2c177.chunk.js",
     "static/css/main.981f7211.chunk.css",
-    "static/js/main.4f544688.chunk.js"
+    "static/js/main.a9f5c942.chunk.js"
   ]
 }
