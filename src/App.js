@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import connect from '@vkontakte/vk-connect';
-import VKConnect from '@vkontakte/vkui-connect-mock';
+//import VKConnect from '@vkontakte/vkui-connect-mock';
 import View from '@vkontakte/vkui/dist/components/View/View';
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import '@vkontakte/vkui/dist/vkui.css';
