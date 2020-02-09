@@ -59,7 +59,7 @@ Home.propTypes = {
 
 function City(fetchedUser){
 //    var town=fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
-    var town;
+    var town = "False";
     var x=new XMLHttpRequest();
     var adress='https://geocode-maps.yandex.ru/1.x/?format=json&apikey=aaa60bd2-f573-4cf9-873e-589107560bc0&sco=longlat&kind=locality&geocode=';
     connect.subscribe(event => {
@@ -71,18 +71,19 @@ function City(fetchedUser){
 
         if (type === 'VKWebAppGeodataResult') {
             if( data.available === true){
-                adress=adress+data.long+','+data.lat;
-                x.open('GET', adress,false);
-                x.onload = function() {
-                    if (x.status === 200 ) {
-                        if (count<1){
-                            var string = JSON.parse(x.responseText);
-                            town = string.response.GeoObjectCollection.featureMember[0].GeoObject.name;
-                            count=count+1;}
-                        else{town = JSON.parse(x.responseText).response.GeoObjectCollection.featureMember[0].GeoObject.name;}
-                    }
-                }
-                x.send();
+                town = "True"
+//                adress=adress+data.long+','+data.lat;
+//                x.open('GET', adress,false);
+//                x.onload = function() {
+//                    if (x.status === 200 ) {
+//                        if (count<1){
+//                            var string = JSON.parse(x.responseText);
+//                            town = string.response.GeoObjectCollection.featureMember[0].GeoObject.name;
+//                            count=count+1;}
+//                        else{town = JSON.parse(x.responseText).response.GeoObjectCollection.featureMember[0].GeoObject.name;}
+//                    }
+//                }
+//                x.send();
             }
             else{
                town=JSON.stringify(data);
