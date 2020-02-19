@@ -1,26 +1,22 @@
 {
   "files": {
-    "main.css": "/Newsify/static/css/main.981f7211.chunk.css",
-    "main.js": "/Newsify/static/js/main.1fd3def2.chunk.js",
-    "main.js.map": "/Newsify/static/js/main.1fd3def2.chunk.js.map",
+    "main.js": "/Newsify/static/js/main.58766a74.chunk.js",
+    "main.js.map": "/Newsify/static/js/main.58766a74.chunk.js.map",
     "runtime-main.js": "/Newsify/static/js/runtime-main.5579cca6.js",
     "runtime-main.js.map": "/Newsify/static/js/runtime-main.5579cca6.js.map",
     "static/css/2.2cfa1b23.chunk.css": "/Newsify/static/css/2.2cfa1b23.chunk.css",
-    "static/js/2.36b1cfbc.chunk.js": "/Newsify/static/js/2.36b1cfbc.chunk.js",
-    "static/js/2.36b1cfbc.chunk.js.map": "/Newsify/static/js/2.36b1cfbc.chunk.js.map",
+    "static/js/2.e7c4f520.chunk.js": "/Newsify/static/js/2.e7c4f520.chunk.js",
+    "static/js/2.e7c4f520.chunk.js.map": "/Newsify/static/js/2.e7c4f520.chunk.js.map",
     "index.html": "/Newsify/index.html",
-    "precache-manifest.a82f36f1ee84e07ef4dad15d940b3374.js": "/Newsify/precache-manifest.a82f36f1ee84e07ef4dad15d940b3374.js",
+    "precache-manifest.716b95aceda0bdb5f69e3ae86821ac1c.js": "/Newsify/precache-manifest.716b95aceda0bdb5f69e3ae86821ac1c.js",
     "service-worker.js": "/Newsify/service-worker.js",
     "static/css/2.2cfa1b23.chunk.css.map": "/Newsify/static/css/2.2cfa1b23.chunk.css.map",
-    "static/css/main.981f7211.chunk.css.map": "/Newsify/static/css/main.981f7211.chunk.css.map",
-    "static/js/2.36b1cfbc.chunk.js.LICENSE.txt": "/Newsify/static/js/2.36b1cfbc.chunk.js.LICENSE.txt",
-    "static/media/persik.png": "/Newsify/static/media/persik.4e1ec840.png"
+    "static/js/2.e7c4f520.chunk.js.LICENSE.txt": "/Newsify/static/js/2.e7c4f520.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5579cca6.js",
     "static/css/2.2cfa1b23.chunk.css",
-    "static/js/2.36b1cfbc.chunk.js",
-    "static/css/main.981f7211.chunk.css",
-    "static/js/main.1fd3def2.chunk.js"
+    "static/js/2.e7c4f520.chunk.js",
+    "static/js/main.58766a74.chunk.js"
   ]
 }
