@@ -25,6 +25,10 @@ import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import FormLayout from '@vkontakte/vkui/dist/components/FormLayout/FormLayout';
 import FormLayoutGroup from '@vkontakte/vkui/dist/components/FormLayoutGroup/FormLayoutGroup';
 import persik from '../img/persik.png';
+import Inst_1 from '../img/inst_1.jpg';
+import Inst_2 from '../img/inst_2.jpg';
+import Inst_3 from '../img/inst_3.jpg';
+
 const osName = platform();
 //const Array = [{text:'xxxxxxx',title_group:'dsfth'},{text:'xxxxxxx',title_group:'dsfth'}]
 const Home = ({ id, go, authToken, fetchedUser}) => (
@@ -52,13 +56,13 @@ const Home = ({ id, go, authToken, fetchedUser}) => (
                                     align="centred"
                                     bullets="dark"
                                 >
-                                    <img src={persik} alt="example"></img>
-                                    <img src={persik} alt="example"></img>
-                                    <img src={persik} alt="example"></img>
+                                    <img src={Inst_1} alt="example"></img>
+                                    <img src={Inst_2} alt="example"></img>
+                                    <img src={Inst_3} alt="example"></img>
                                 </Gallery>
-                                <Button mode="tertiary"><Avatar style={{ background: 'var(--destructive)' }} size={28}><Icon16Like fill="var(--white)" /></Avatar></Button>
-                                <Button mode="tertiary"><Avatar style={{ background: 'var(--accent)' }} size={28}><Icon16Comment fill="var(--white)" /></Avatar></Button>
-                                <Button mode="tertiary"><Avatar style={{ background: 'var(--accent)' }} size={28}><Icon16Repost fill="var(--white)" /></Avatar></Button>
+                                <Button mode="tertiary" ><Avatar style={{ background: 'var(--destructive)' }} size={20}><Icon16Like fill="var(--white)" /></Avatar></Button>
+                                <Button mode="tertiary" ><Avatar style={{ background: 'var(--accent)' }} size={19}><Icon16Comment fill="var(--white)" /></Avatar></Button>
+                                <Button mode="tertiary" ><Avatar style={{ background: 'var(--accent)' }} size={19}><Icon16Repost fill="var(--white)" /></Avatar></Button>
                             </FormLayoutGroup>
                         </FormLayout>
                     </Card>
