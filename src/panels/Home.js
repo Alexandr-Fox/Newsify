@@ -5,40 +5,71 @@ import PropTypes from 'prop-types';
 import { platform, IOS } from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-//import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import HeaderButton from '@vkontakte/vkui/dist/components/HeaderButton/HeaderButton';
+import Button from '@vkontakte/vkui/dist/components/Button/Button';
+import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
 import Icon28Settings from '@vkontakte/icons/dist/28/settings';
+import Icon16Like from '@vkontakte/icons/dist/16/like';
+import Icon16Repost from '@vkontakte/icons/dist/16/repost';
+import Icon16Comment from '@vkontakte/icons/dist/16/comment';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
-//import Group from '@vkontakte/vkui/dist/components/Group/Group';
-////import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
-//import Div from '@vkontakte/vkui/dist/components/Div/Div';
+//import Icon28VK from '@vkontakte/icons/dist/28/logo_vk';
+import Icon28Instagram from '@vkontakte/icons/dist/28/logo_instagram';
+import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
+import Group from '@vkontakte/vkui/dist/components/Group/Group';
+import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
+import Div from '@vkontakte/vkui/dist/components/Div/Div';
+import CardGrid from '@vkontakte/vkui/dist/components/CardGrid/CardGrid';
+import Card from '@vkontakte/vkui/dist/components/Card/Card';
+import Gallery from '@vkontakte/vkui/dist/components/Gallery/Gallery';
+import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import FormLayout from '@vkontakte/vkui/dist/components/FormLayout/FormLayout';
-//import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
-
-
-//var count = 0;
-//var town_stat = "";
-//const mysql = require("mysql2");
-//const connection = mysql.createConnection({
-//    host: "db4free.net",
-//    user: "alexandrfox",
-//    database: "newsify",
-//    password: "Yfljyeyfljyt"
-//});
-
+import FormLayoutGroup from '@vkontakte/vkui/dist/components/FormLayoutGroup/FormLayoutGroup';
+import persik from '../img/persik.png';
 const osName = platform();
-const Home = ({ id, go, fetchedUser}) => (
+//const Array = [{text:'xxxxxxx',title_group:'dsfth'},{text:'xxxxxxx',title_group:'dsfth'}]
+const Home = ({ id, go, authToken, fetchedUser}) => (
 	<Panel id={id}>
 		<PanelHeader
-			left={<HeaderButton onClick={go} data-to="settings">
+			left={<PanelHeaderButton onClick={go} data-to="settings">
 				{osName === IOS ? <Icon28Settings/> : <Icon24Settings/>}
-			</HeaderButton>}
+			</PanelHeaderButton>}
 		>Новости</PanelHeader>
-		<FormLayout>
-		</FormLayout>
-
+		{fetchedUser &&
+		<Div>
+            <Group separator="hide" header={<Header subtitle="Instagram"><Icon28Instagram/></Header>}>
+                <CardGrid>
+                    <Card size="l" mode="shadow">
+                        <Cell
+                            before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
+                            description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}>
+                            {`${fetchedUser.first_name} ${fetchedUser.last_name}`}
+                        </Cell>
+                        <FormLayout>
+                            <FormLayoutGroup >
+                                <Gallery
+                                    slideWidth="90%"
+                                    style={{ height: "10%" ,width: "99%"}}
+                                    align="centred"
+                                    bullets="dark"
+                                >
+                                    <img src={persik} alt="example"></img>
+                                    <img src={persik} alt="example"></img>
+                                    <img src={persik} alt="example"></img>
+                                </Gallery>
+                                <Button mode="tertiary"><Avatar style={{ background: 'var(--destructive)' }} size={28}><Icon16Like fill="var(--white)" /></Avatar></Button>
+                                <Button mode="tertiary"><Avatar style={{ background: 'var(--accent)' }} size={28}><Icon16Comment fill="var(--white)" /></Avatar></Button>
+                                <Button mode="tertiary"><Avatar style={{ background: 'var(--accent)' }} size={28}><Icon16Repost fill="var(--white)" /></Avatar></Button>
+                            </FormLayoutGroup>
+                        </FormLayout>
+                    </Card>
+                </CardGrid>
+            </Group>
+        </Div>}
 	</Panel>
 );
+//        {Array.map(({text,title_group}) =>(
+//            <News text={text} title_group={title_group} go={go}/>
+//        ))}
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,

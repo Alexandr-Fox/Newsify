@@ -1,42 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import connect from '@vkontakte/vk-connect';
-import View from '@vkontakte/vkui/dist/components/View/View';
-import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
+import { View } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
+//import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import Settings from './panels/Settings';
 
-
 import Home from './panels/Home';
-const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
-	const [fetchedUser, setUser] = useState(null);
-	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-	useEffect(() => {
-		connect.subscribe(({ detail: { type, data }}) => {
-			if (type === 'VKWebAppUpdateConfig') {
-				const schemeAttribute = document.createAttribute('scheme');
-				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-				document.body.attributes.setNamedItem(schemeAttribute);
+
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			activePanel: 'home',
+			fetchedUser: null,
+			authToken : null,
+			items : []
+		};
+
+	}
+
+	componentDidMount() {
+		connect.subscribe((e) => {
+			switch (e.detail.type) {
+				case 'VKWebAppGetUserInfoResult':
+					this.setState({ fetchedUser: e.detail.data });
+					break;
+				case 'VKWebAppAccessTokenReceived':
+					this.setState({ authToken : e.detail.data.access_token });
+					break;
+				default:
+					console.log(e.detail);
 			}
 		});
-		async function fetchData() {
-			const user = await connect.send('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
-		}
-		fetchData();
-	}, []);
+		connect.send('VKWebAppGetUserInfo', {});
+		connect.send("VKWebAppGetAuthToken", {"app_id": 7308928 , "scope": "friends,photos,video,wall,groups"});
+	}
 
-	const go = e => {
-		setActivePanel(e.currentTarget.dataset.to);
+	go = (e) => {
+		this.setState({ activePanel: e.currentTarget.dataset.to })
 	};
+//
+//	getItems() {
+//		const ownerId = 124527492
+//		let api = `https://api.vk.com/method/market.get?v=5.52&access_token=${this.state.authToken}&owner_id=-${ownerId}`
+//		fetchJsonp(api)
+//		.then(res => res.json())
+//		.then(data => this.setState({ items : data.response.items}))
+//		.catch(e => [])
+//	}
 
-	return (
-		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-            <Settings id='settings' fetchedUser={fetchedUser} go={go} />
-		</View>
-	);
+	render() {
+		return (
+			<View activePanel={this.state.activePanel}>
+				<Home id="home" authToken={this.state.authToken} fetchedUser={this.state.fetchedUser} go={this.go} />
+				<Settings id="settings" fetchedUser={this.state.fetchedUser} go={this.go} />
+			</View>
+		);
+	}
 }
 
 export default App;

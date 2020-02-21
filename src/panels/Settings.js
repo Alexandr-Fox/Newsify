@@ -1,17 +1,10 @@
-import React from 'react';//, { useState, useEffect }
+import React from 'react';
 import PropTypes from 'prop-types';
-import { platform, IOS } from '@vkontakte/vkui';
+import { platform, IOS, Panel, Button, PanelHeaderButton, FormLayoutGroup, FormLayout, Input, CardGrid, Card, Header, Avatar, Cell, PanelHeader, Group, Div } from '@vkontakte/vkui';
 //import connect from '@vkontakte/vk-connect';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import HeaderButton from '@vkontakte/vkui/dist/components/HeaderButton/HeaderButton';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
-//import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
-import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
+import Icon28Instagram from '@vkontakte/icons/dist/28/logo_instagram';
 
 //import persik from '../img/persik.png';
 //import './Persik.css';
@@ -19,28 +12,56 @@ import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 const osName = platform();
 
 //var count = 0;
-
+//const popout=<ScreenSpinner size='large' />
+var email;
+const onChange = (e) => {
+    const { name, value } = e.currentTarget;
+    console.log(name,  email);
+    email= value;
+}
 const Settings = ({ id, go, fetchedUser}) => (
 	<Panel id={id}>
 		<PanelHeader
-			left={<HeaderButton onClick={go} data-to="home">
+			left={<PanelHeaderButton onClick={go} data-to="home">
 				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-			</HeaderButton>}
+			</PanelHeaderButton>}
+//			popout={popout}
 		>
 			Настройки
 		</PanelHeader>
 		{fetchedUser &&
-		<Group title="Профиль">
-			<Cell
-				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
-				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}>
-				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-			</Cell>
-		</Group>}
-		<Group title="Инстаграм">
+        <Group separator="hide" header={<Header mode="secondary">Профиль</Header>}>
+            <CardGrid>
+                <Card size="l" mode="shadow">
+                    <Cell
+                        before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
+                        description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}>
+                        {`${fetchedUser.first_name} ${fetchedUser.last_name}`}
+                    </Cell>
+                </Card>
+            </CardGrid>
+        </Group>}
+        <Div>
+            <Group separator="hide" header={<Header mode="secondary">Instagram</Header>}>
+                <CardGrid>
+                    <Card size="l" mode="shadow">
+                        <Cell
+                            before={<Icon28Instagram/>}
+                            description={"Временно не работает!"}>
+                            Вход в Instagram
+                        </Cell>
+                        <FormLayout>
+                            <FormLayoutGroup >
+                                <Input top="Логин" name="email" type="email" placeholder="Введите логин" value={email} onChange={onChange}/>
+                                <Input top="Пароль" type="password"  placeholder="Введите пароль" />
+                                <Button size="xl" mode="secondary" onClick={go} data-to='home' disabled>Войти</Button>
+                            </FormLayoutGroup>
+                        </FormLayout>
+                    </Card>
+                </CardGrid>
+            </Group>
+        </Div>
 
-		</Group>
-		<ScreenSpinner size='large' />
 	</Panel>
 );
 
@@ -56,6 +77,10 @@ Settings.propTypes = {
 		}),
 	}),
 };
+////           CardGrid
+////                Card size="l" mode="shadow"
+////                /Card
+////            /CardGrid
 
 //function statTown(fetchedUser){
 //    return fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : '';
