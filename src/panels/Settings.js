@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { platform, IOS, Panel, Button, PanelHeaderButton, FormLayoutGroup, FormLayout, Input, CardGrid, Card, Header, Avatar, Cell, PanelHeader, Group, Div } from '@vkontakte/vkui';
+import { platform, IOS, Panel, Button, PanelHeaderButton, FormLayoutGroup, FormLayout, Input, Card, Header, Avatar, Cell, PanelHeader, Group} from '@vkontakte/vkui';
 //import connect from '@vkontakte/vk-connect';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon28Instagram from '@vkontakte/icons/dist/28/logo_instagram';
-
-//import persik from '../img/persik.png';
-//import './Persik.css';
-
 const osName = platform();
 
 //var count = 0;
@@ -19,31 +15,34 @@ const onChange = (e) => {
     console.log(name,  email);
     email= value;
 }
-const Settings = ({ id, go, fetchedUser}) => (
-	<Panel id={id}>
-		<PanelHeader
-			left={<PanelHeaderButton onClick={go} data-to="home">
-				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-			</PanelHeaderButton>}
-//			popout={popout}
-		>
-			Настройки
-		</PanelHeader>
-		{fetchedUser &&
-        <Group separator="hide" header={<Header mode="secondary">Профиль</Header>}>
-            <CardGrid>
-                <Card size="l" mode="shadow">
-                    <Cell
-                        before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
-                        description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}>
-                        {`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-                    </Cell>
-                </Card>
-            </CardGrid>
-        </Group>}
-        <Div>
-            <Group separator="hide" header={<Header mode="secondary">Instagram</Header>}>
-                <CardGrid>
+class Settings extends React.Component {
+//	constructor(props) {
+//		super(props);
+//	}
+
+	render() {
+		let { id, go, fetchedUser} = this.props
+		return(
+            <Panel id={id}>
+                <PanelHeader
+                    left={<PanelHeaderButton onClick={go} data-to="home">
+                        {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
+                    </PanelHeaderButton>}
+        //			popout={popout}
+                >
+                    Настройки
+                </PanelHeader>
+                {fetchedUser &&
+                <Group separator="hide" header={<Header mode="secondary">Профиль</Header>}>
+                    <Card size="l" mode="shadow">
+                        <Cell
+                            before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
+                            description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}>
+                            {`${fetchedUser.first_name} ${fetchedUser.last_name}`}
+                        </Cell>
+                    </Card>
+                </Group>}
+                <Group separator="hide" header={<Header mode="secondary">Instagram</Header>}>
                     <Card size="l" mode="shadow">
                         <Cell
                             before={<Icon28Instagram/>}
@@ -58,12 +57,12 @@ const Settings = ({ id, go, fetchedUser}) => (
                             </FormLayoutGroup>
                         </FormLayout>
                     </Card>
-                </CardGrid>
-            </Group>
-        </Div>
+                </Group>
 
-	</Panel>
-);
+            </Panel>
+        );
+    }
+}
 
 Settings.propTypes = {
 	id: PropTypes.string.isRequired,
